@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagementSystem.Common", "HRManagementSystem.Common\HRManagementSystem.Common.csproj", "{9281F4AF-C9C5-4C01-8BC7-D4B2D155880E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.Common", "HRManagementSystem.Common\HRManagementSystem.Common.csproj", "{9281F4AF-C9C5-4C01-8BC7-D4B2D155880E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagementSystem.Entity", "HRManagementSystem.Entity\HRManagementSystem.Entity.csproj", "{8A4905C3-2736-422E-A00B-061A96CC749A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9281F4AF-C9C5-4C01-8BC7-D4B2D155880E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9281F4AF-C9C5-4C01-8BC7-D4B2D155880E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9281F4AF-C9C5-4C01-8BC7-D4B2D155880E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A4905C3-2736-422E-A00B-061A96CC749A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A4905C3-2736-422E-A00B-061A96CC749A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A4905C3-2736-422E-A00B-061A96CC749A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A4905C3-2736-422E-A00B-061A96CC749A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
