@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRManagementSystem.Entity
+namespace HRManagementSystem.Entity.Concrete
 {
-    public class AppRole : BaseEntity
+    public class Gender : BaseEntity
     {
         public string Definition { get; set; }
-        public List<AppUserRole> UserRoles { get; set; }
+
+        public List<AppUser> AppUsers { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRManagementSystem.Entity
+namespace HRManagementSystem.Entity.Concrete
 {
     public class Advertisement : BaseEntity
     {
@@ -12,5 +12,6 @@ namespace HRManagementSystem.Entity
         public bool Status { get; set; }
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
+        public List<AdvertisementAppUser> AdvertisementAppUsers { get; set; }
     }
 }

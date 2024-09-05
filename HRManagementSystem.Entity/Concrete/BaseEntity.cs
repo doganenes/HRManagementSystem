@@ -1,4 +1,4 @@
-﻿namespace HRManagementSystem.Entity
+﻿namespace HRManagementSystem.Entity.Concrete
 {
     public class BaseEntity
     {
