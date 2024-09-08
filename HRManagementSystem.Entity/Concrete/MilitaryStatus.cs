@@ -8,7 +8,7 @@ namespace HRManagementSystem.Entity.Concrete
 {
     public class MilitaryStatus : BaseEntity
     {
-        public string Defintion { get; set; }
+        public string Definition { get; set; }
         public List<AdvertisementAppUser> AdvertisementAppUsers { get; set; }
     }
 }

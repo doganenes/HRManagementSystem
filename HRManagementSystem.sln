@@ -5,9 +5,11 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.Common", "HRManagementSystem.Common\HRManagementSystem.Common.csproj", "{9281F4AF-C9C5-4C01-8BC7-D4B2D155880E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagementSystem.Entity", "HRManagementSystem.Entity\HRManagementSystem.Entity.csproj", "{8A4905C3-2736-422E-A00B-061A96CC749A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.Entity", "HRManagementSystem.Entity\HRManagementSystem.Entity.csproj", "{8A4905C3-2736-422E-A00B-061A96CC749A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagementSystem.UI", "HRManagementSystem.UI\HRManagementSystem.UI.csproj", "{FFE50869-0278-43B0-845F-DA749BECF8A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.UI", "HRManagementSystem.UI\HRManagementSystem.UI.csproj", "{FFE50869-0278-43B0-845F-DA749BECF8A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagementSystem.DataAccess", "HRManagementSystem.DataAccess\HRManagementSystem.DataAccess.csproj", "{0CBC602D-C366-40AE-900B-B1D829CC5774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{FFE50869-0278-43B0-845F-DA749BECF8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFE50869-0278-43B0-845F-DA749BECF8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFE50869-0278-43B0-845F-DA749BECF8A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CBC602D-C366-40AE-900B-B1D829CC5774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CBC602D-C366-40AE-900B-B1D829CC5774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CBC602D-C366-40AE-900B-B1D829CC5774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CBC602D-C366-40AE-900B-B1D829CC5774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
