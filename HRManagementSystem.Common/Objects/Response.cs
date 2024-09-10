@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRManagementSystem.Common
+namespace HRManagementSystem.Common.Objects
 {
     public class Response : IResponse
     {

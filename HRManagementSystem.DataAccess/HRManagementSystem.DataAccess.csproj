@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HRManagementSystem.Common\HRManagementSystem.Common.csproj" />
     <ProjectReference Include="..\HRManagementSystem.Entity\HRManagementSystem.Entity.csproj" />
   </ItemGroup>
 
