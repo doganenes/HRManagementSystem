@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HRManagementSystem.DataAccess\HRManagementSystem.DataAccess.csproj" />
+    <ProjectReference Include="..\HRManagementSystem.Dtos\HRManagementSystem.Dtos.csproj" />
   </ItemGroup>
 
 </Project>

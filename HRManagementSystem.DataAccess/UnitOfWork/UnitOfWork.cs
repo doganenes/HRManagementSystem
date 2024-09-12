@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HRManagementSystem.DataAccess.UnitOfWork
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly HRContext _context;
 

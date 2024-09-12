@@ -17,7 +17,7 @@ namespace HRManagementSystem.DataAccess.Concrete
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer();
+            optionsBuilder.UseSqlServer("server=ENES\\SQLEXPRESS;database=HRManagementDB;TrustServerCertificate=true;Trusted_Connection=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
