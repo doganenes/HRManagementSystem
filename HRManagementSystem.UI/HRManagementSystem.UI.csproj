@@ -4564,4 +4564,8 @@
     <Folder Include="wwwroot\Focus2AdminPanel\.git\refs\tags\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HRManagementSystem.Business\HRManagementSystem.Business.csproj" />
+  </ItemGroup>
+
 </Project>

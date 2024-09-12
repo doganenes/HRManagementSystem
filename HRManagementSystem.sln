@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.Entity",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.UI", "HRManagementSystem.UI\HRManagementSystem.UI.csproj", "{FFE50869-0278-43B0-845F-DA749BECF8A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagementSystem.DataAccess", "HRManagementSystem.DataAccess\HRManagementSystem.DataAccess.csproj", "{0CBC602D-C366-40AE-900B-B1D829CC5774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem.DataAccess", "HRManagementSystem.DataAccess\HRManagementSystem.DataAccess.csproj", "{0CBC602D-C366-40AE-900B-B1D829CC5774}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagementSystem.Business", "HRManagementSystem.Business\HRManagementSystem.Business.csproj", "{D6F71DDA-B237-4C8F-B39B-1E39EFE4496D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0CBC602D-C366-40AE-900B-B1D829CC5774}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CBC602D-C366-40AE-900B-B1D829CC5774}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CBC602D-C366-40AE-900B-B1D829CC5774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6F71DDA-B237-4C8F-B39B-1E39EFE4496D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F71DDA-B237-4C8F-B39B-1E39EFE4496D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F71DDA-B237-4C8F-B39B-1E39EFE4496D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F71DDA-B237-4C8F-B39B-1E39EFE4496D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
