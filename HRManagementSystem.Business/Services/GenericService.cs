@@ -71,7 +71,7 @@ namespace HRManagementSystem.Business.Services
 
             public async Task<IResponse> RemoveAsync(int id)
             {
-                var data = await _unitOfWork.GetRepository<T>().FindAsync(x => x.Id == id);
+                var data = await _unitOfWork.GetRepository<T>().FindAsync(id);
                 if (data == null)
                 {
                     return new Response(ResponseType.NotFound, $"{id} idsine sahip data bulunamadı!");
@@ -99,5 +99,4 @@ namespace HRManagementSystem.Business.Services
             }
         }
     }
-
 }

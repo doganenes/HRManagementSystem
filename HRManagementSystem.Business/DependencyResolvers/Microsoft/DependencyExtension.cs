@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using HRManagementSystem.Business.Interfaces;
 using HRManagementSystem.Business.Mappings.AutoMapper;
+using HRManagementSystem.Business.Services;
 using HRManagementSystem.Business.ValidationRules;
 using HRManagementSystem.DataAccess.Concrete;
 using HRManagementSystem.DataAccess.UnitOfWork;
 using HRManagementSystem.Dtos.ProvidedServiceDtos;
+using HRManagementSystem.Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,8 +39,8 @@ namespace HRManagementSystem.Business.DependencyResolvers.Microsoft
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IValidator<ProvidedServiceCreateDto>, ProvidedServiceCreateDtoValidator>();
-
             services.AddTransient<IValidator<ProvidedServiceUpdateDto>, ProvidedServiceUpdateDtoValidator>();
+            services.AddScoped<IProvidedServiceService, ProvidedServiceManager>();
         }
 
     }
