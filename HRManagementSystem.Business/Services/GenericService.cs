@@ -25,18 +25,15 @@ namespace HRManagementSystem.Business.Services
             private readonly IMapper _mapper;
             private readonly IValidator<CreateDto> _createDtoValidator;
             private readonly IValidator<UpdateDto> _updateDtoValidator;
-            private readonly IValidator<ListDto> _listDtoValidator;
             private readonly IUnitOfWork _unitOfWork;
 
-            public GenericService(IMapper mapper, IValidator<CreateDto> createDtoValidator, IValidator<UpdateDto> updateDtoValidator, IValidator<ListDto> listDtoValidator, IUnitOfWork unitOfWork)
+            public GenericService(IMapper mapper, IValidator<CreateDto> createDtoValidator, IValidator<UpdateDto> updateDtoValidator, IUnitOfWork unitOfWork)
             {
                 _mapper = mapper;
                 _createDtoValidator = createDtoValidator;
                 _updateDtoValidator = updateDtoValidator;
-                _listDtoValidator = listDtoValidator;
                 _unitOfWork = unitOfWork;
             }
-
             public async Task<IResponse<CreateDto>> CreateAsync(CreateDto dto)
             {
                 var result = _createDtoValidator.Validate(dto);

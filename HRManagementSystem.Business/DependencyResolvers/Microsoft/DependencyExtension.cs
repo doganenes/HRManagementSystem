@@ -41,7 +41,7 @@ namespace HRManagementSystem.Business.DependencyResolvers.Microsoft
             services.AddTransient<IValidator<ProvidedServiceCreateDto>, ProvidedServiceCreateDtoValidator>();
             services.AddTransient<IValidator<ProvidedServiceUpdateDto>, ProvidedServiceUpdateDtoValidator>();
             services.AddScoped<IProvidedServiceService, ProvidedServiceManager>();
-        }
 
+        }
     }
 }
