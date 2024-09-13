@@ -74,15 +74,28 @@ namespace HRManagementSystem.Business.Services
                 var data = await _unitOfWork.GetRepository<T>().FindAsync(x => x.Id == id);
                 if (data == null)
                 {
-                    return new Response(ResponseType.NotFound, $"{id}'ye sahip data bulunamadı!");
+                    return new Response(ResponseType.NotFound, $"{id} idsine sahip data bulunamadı!");
                 }
                 _unitOfWork.GetRepository<T>().Remove(data);
                 return new Response(ResponseType.Success);
             }
 
-            public Task<IResponse<UpdateDto>> UpdateAsync(UpdateDto dto)
+            public async Task<IResponse<UpdateDto>> UpdateAsync(UpdateDto dto)
             {
-                _unitOfWork.GetRepository<T>().Update();
+                var result = _updateDtoValidator.Validate(dto);
+                if (result.IsValid)
+                {
+                    var unchangedData = await _unitOfWork.GetRepository<T>().FindAsync(dto.Id);
+                    if (unchangedData == null)
+                    {
+                        return new Response<UpdateDto>(ResponseType.NotFound, $"{dto.Id} idsine sahip data bulunamadı!");
+                    }
+                    var entity = _mapper.Map<T>(dto);
+                    _unitOfWork.GetRepository<T>().Update(entity, unchangedData);
+                    return new Response<UpdateDto>(ResponseType.Success, dto);
+                }
+
+                return new Response<UpdateDto>(dto, result.ConvertToCustomValidationError());
             }
         }
     }

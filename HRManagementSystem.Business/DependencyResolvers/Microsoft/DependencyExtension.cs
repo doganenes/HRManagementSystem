@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using HRManagementSystem.Business.Mappings.AutoMapper;
 using HRManagementSystem.Business.ValidationRules;
 using HRManagementSystem.DataAccess.Concrete;
 using HRManagementSystem.DataAccess.UnitOfWork;
@@ -26,6 +27,7 @@ namespace HRManagementSystem.Business.DependencyResolvers.Microsoft
 
             var mapperConfiguration = new MapperConfiguration(opt =>
             {
+                opt.AddProfile(new ProvidedServiceProfile());
             });
 
             var mapper = mapperConfiguration.CreateMapper();

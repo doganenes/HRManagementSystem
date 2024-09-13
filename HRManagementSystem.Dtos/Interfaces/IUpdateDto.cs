@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HRManagementSystem.Dtos.Interfaces
 {
-    public class IUpdateDto
+    public interface IUpdateDto
     {
+        public int Id { get; set; }
     }
 }
