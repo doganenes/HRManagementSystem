@@ -31,8 +31,6 @@ app.Run();
 void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
     var connectionString = configuration.GetConnectionString("Local");
-
-    services.AddScoped<IUnitOfWork, UnitOfWork>();
     services.AddDependencies(configuration);
     services.AddControllersWithViews();
 
