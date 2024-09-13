@@ -1,49 +1,218 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HRManagementSystem.UI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/HRManagementSystem.UI.styles.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Focus - Bootstrap Admin Dashboard </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/FocusAdminTemplate/images/favicon.png">
+    <link rel="stylesheet" href="~/FocusAdminTemplate/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/FocusAdminTemplate/vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link href="~/FocusAdminTemplate/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="~/FocusAdminTemplate/css/style.css" rel="stylesheet">
+
+
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HRManagementSystem.UI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - HRManagementSystem.UI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div id="main-wrapper">
+
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+                HR
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="search_bar dropdown">
+                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                                <div class="dropdown-menu p-0 m-0">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-bell"></i>
+                                    <div class="pulse-css"></div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="list-unstyled">
+                                        <li class="media dropdown-item">
+                                            <span class="success"><i class="ti-user"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p>
+                                                        <strong>Martin</strong> has added a <strong>customer</strong> Successfully
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                        <li class="media dropdown-item">
+                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                        <li class="media dropdown-item">
+                                            <span class="danger"><i class="ti-bookmark"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p>
+                                                        <strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                        <li class="media dropdown-item">
+                                            <span class="primary"><i class="ti-heart"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                        <li class="media dropdown-item">
+                                            <span class="success"><i class="ti-image"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p>
+                                                        <strong> James.</strong> has added a<strong>customer</strong> Successfully
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                    </ul>
+                                    <a class="all-notification" href="#">
+                                        See all notifications <i class="ti-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="./app-profile.html" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                    <a href="./email-inbox.html" class="dropdown-item">
+                                        <i class="icon-envelope-open"></i>
+                                        <span class="ml-2">Inbox </span>
+                                    </a>
+                                    <a href="./page-login.html" class="dropdown-item">
+                                        <i class="icon-key"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Homepage</li>
+                    <li>
+                        <a href="widget-basic.html" aria-expanded="false">
+                            <i class="icon icon-globe-2"></i><span class="nav-text">Widget</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widget-basic.html" aria-expanded="false">
+                            <i class="icon icon-globe-2"></i><span class="nav-text">Widget</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widget-basic.html" aria-expanded="false">
+                            <i class="icon icon-globe-2"></i><span class="nav-text">Widget</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--Content-->
+    <div class="content-body">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+
+        <!--Footer-->
+        <div class="footer">
+            <div class="copyright">
+                <p>HR Management System | @DateTime.Now.Year</p>
+                <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p>
+            </div>
+        </div>
+
+
+
+    <!--Scripts-->
+
+    <script src="~/FocusAdminTemplate/vendor/global/global.min.js"></script>
+    <script src="~/FocusAdminTemplate/js/quixnav-init.js"></script>
+    <script src="~/FocusAdminTemplate/js/custom.min.js"></script>
+
+    <script src="~/FocusAdminTemplate/vendor/raphael/raphael.min.js"></script>
+    <script src="~/FocusAdminTemplate/vendor/morris/morris.min.js"></script>
+
+
+    <script src="~/FocusAdminTemplate/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/FocusAdminTemplate/vendor/chart.js/Chart.bundle.min.js"></script>
+
+    <script src="~/FocusAdminTemplate/vendor/gaugeJS/dist/gauge.min.js"></script>
+
+    <script src="~/FocusAdminTemplate/vendor/flot/jquery.flot.js"></script>
+    <script src="~/FocusAdminTemplate/vendor/flot/jquery.flot.resize.js"></script>
+
+    <script src="~/FocusAdminTemplate/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+    <script src="~/FocusAdminTemplate/vendor/jqvmap/js/jquery.vmap.min.js"></script>
+    <script src="~/FocusAdminTemplate/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+    <script src="~/FocusAdminTemplate/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+
+
+    <script src="~/FocusAdminTemplate/js/dashboard/dashboard-1.js"></script>
+
 </body>
+
 </html>
