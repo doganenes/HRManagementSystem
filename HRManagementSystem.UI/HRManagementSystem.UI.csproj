@@ -4562,6 +4562,8 @@
     <Folder Include="wwwroot\Focus2AdminPanel\.git\objects\info\" />
     <Folder Include="wwwroot\Focus2AdminPanel\.git\objects\pack\" />
     <Folder Include="wwwroot\Focus2AdminPanel\.git\refs\tags\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\css\css\" />
   </ItemGroup>
 
   <ItemGroup>

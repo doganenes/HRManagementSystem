@@ -6,7 +6,7 @@ using HRManagementSystem.Business.Services;
 using HRManagementSystem.Business.ValidationRules;
 using HRManagementSystem.DataAccess.Concrete;
 using HRManagementSystem.DataAccess.UnitOfWork;
-using HRManagementSystem.Dtos.ProvidedServiceDtos;
+using HRManagementSystem.Dtos;
 using HRManagementSystem.Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

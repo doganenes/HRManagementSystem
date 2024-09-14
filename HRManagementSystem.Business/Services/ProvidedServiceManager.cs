@@ -3,7 +3,7 @@ using FluentValidation;
 using HRManagementSystem.Business.Interfaces;
 using HRManagementSystem.Business.Services.HRManagementSystem.Business.Services;
 using HRManagementSystem.DataAccess.UnitOfWork;
-using HRManagementSystem.Dtos.ProvidedServiceDtos;
+using HRManagementSystem.Dtos;
 using HRManagementSystem.Entity.Concrete;
 using System;
 using System.Collections.Generic;

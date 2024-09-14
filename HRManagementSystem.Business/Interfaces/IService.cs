@@ -1,6 +1,6 @@
 ﻿using HRManagementSystem.Common.Objects;
 using HRManagementSystem.Dtos.Interfaces;
-using HRManagementSystem.Dtos.ProvidedServiceDtos;
+using HRManagementSystem.Dtos;
 using HRManagementSystem.Entity.Concrete;
 using System;
 using System.Collections.Generic;

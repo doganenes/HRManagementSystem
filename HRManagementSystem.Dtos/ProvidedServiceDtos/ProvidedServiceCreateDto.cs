@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRManagementSystem.Dtos.ProvidedServiceDtos
+namespace HRManagementSystem.Dtos
 {
     public class ProvidedServiceCreateDto : IDto
     {

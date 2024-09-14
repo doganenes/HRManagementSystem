@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HRManagementSystem.Dtos.ProvidedServiceDtos;
+using HRManagementSystem.Dtos;
 using HRManagementSystem.Entity.Concrete;
 using System;
 using System.Collections.Generic;

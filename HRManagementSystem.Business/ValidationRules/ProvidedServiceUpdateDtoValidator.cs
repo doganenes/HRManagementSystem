@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using HRManagementSystem.Dtos.ProvidedServiceDtos;
+using HRManagementSystem.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
