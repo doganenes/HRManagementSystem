@@ -3,7 +3,8 @@ using FluentValidation;
 using HRManagementSystem.Business.Interfaces;
 using HRManagementSystem.Business.Mappings.AutoMapper;
 using HRManagementSystem.Business.Services;
-using HRManagementSystem.Business.ValidationRules;
+using HRManagementSystem.Business.ValidationRules.Advertisement;
+using HRManagementSystem.Business.ValidationRules.ProvidedService;
 using HRManagementSystem.DataAccess.Concrete;
 using HRManagementSystem.DataAccess.UnitOfWork;
 using HRManagementSystem.Dtos;
@@ -31,6 +32,7 @@ namespace HRManagementSystem.Business.DependencyResolvers.Microsoft
             var mapperConfiguration = new MapperConfiguration(opt =>
             {
                 opt.AddProfile(new ProvidedServiceProfile());
+                opt.AddProfile(new AdvertisementProfile());
             });
 
             var mapper = mapperConfiguration.CreateMapper();
@@ -40,6 +42,8 @@ namespace HRManagementSystem.Business.DependencyResolvers.Microsoft
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IValidator<ProvidedServiceCreateDto>, ProvidedServiceCreateDtoValidator>();
             services.AddTransient<IValidator<ProvidedServiceUpdateDto>, ProvidedServiceUpdateDtoValidator>();
+            services.AddTransient<IValidator<AdvertisementCreateDto>, AdvertisementCreateDtoValidator>();
+            services.AddTransient<IValidator<AdvertisementUpdateDto>, AdvertisementUpdateDtoValidator>();
             services.AddScoped<IProvidedServiceService, ProvidedServiceManager>();
 
         }

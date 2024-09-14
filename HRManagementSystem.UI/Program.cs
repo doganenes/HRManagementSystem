@@ -33,5 +33,4 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     var connectionString = configuration.GetConnectionString("Local");
     services.AddDependencies(configuration);
     services.AddControllersWithViews();
-
 }

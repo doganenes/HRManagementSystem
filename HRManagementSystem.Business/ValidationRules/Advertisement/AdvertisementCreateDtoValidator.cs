@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRManagementSystem.Business.ValidationRules
+namespace HRManagementSystem.Business.ValidationRules.Advertisement
 {
-    public class ProvidedServiceCreateDtoValidator : AbstractValidator<ProvidedServiceCreateDto>
+    public class AdvertisementCreateDtoValidator : AbstractValidator<AdvertisementCreateDto>
     {
-        public ProvidedServiceCreateDtoValidator()
+        public AdvertisementCreateDtoValidator()
         {
+            RuleFor(x => x.Title).NotEmpty();
             RuleFor(x => x.Description).NotEmpty();
-            RuleFor(x => x.ImagePath).NotEmpty();
         }
     }
 }
