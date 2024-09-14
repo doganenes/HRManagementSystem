@@ -19,6 +19,10 @@ namespace HRManagementSystem.UI.Controllers
         {
             var response = await _providedServiceService.GetAllAsync();
             return this.ResponseView(response);
+            }
+
+        public IActionResult HumanResources()
+        {
             return View();
         }
 

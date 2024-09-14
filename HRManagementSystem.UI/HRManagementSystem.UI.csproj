@@ -4562,7 +4562,6 @@
     <Folder Include="wwwroot\Focus2AdminPanel\.git\objects\info\" />
     <Folder Include="wwwroot\Focus2AdminPanel\.git\objects\pack\" />
     <Folder Include="wwwroot\Focus2AdminPanel\.git\refs\tags\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\css\css\" />
   </ItemGroup>
 
@@ -4577,6 +4576,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>
