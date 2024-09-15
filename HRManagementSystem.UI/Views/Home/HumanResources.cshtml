@@ -1,18 +1,33 @@
-﻿@{
+﻿@model List<AdvertisementListDto>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Software Developer
-            </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-@Model[i].Id">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@Model[i].Id" aria-expanded="@(i == 0)" aria-controls="collapse-@Model[i].Id">
+                    @Model[i].Title
+                </button>
+            </h2>
+            <div id="collapse-@Model[i].Id" class="accordion-collapse collapse @(i == 0 ? "show" : "")" aria-labelledby="heading-@Model[i].Id" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    @Model[i].Description
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div><a href="#">Apply</a></div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning text-dark text-center mt-3">
+                            Başvuru yapabilmeniz için kayıt olmanız gerekmektedir. <a href="#" class="text-primary">Kayıt Ol</a>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
-    </div>
+    }
 </div>

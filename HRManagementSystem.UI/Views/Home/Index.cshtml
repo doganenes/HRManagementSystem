@@ -4,8 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Our Services</h2>
-
 <style>
     .card {
         display: flex;
@@ -18,13 +16,15 @@
     }
 
     .card-img-top {
-        height: 200px;
+        height: 15rem;
         object-fit: cover;
     }
 </style>
 
+<h2 class="px-4">Our Services</h2>
+
 <div class="container-fluid">
-    <div class="row">
+    <div class="row mt-5">
         @foreach (var item in Model)
         {
             <div class="col-md-4 mb-4">
@@ -33,9 +33,6 @@
                     <div class="card-body">
                         <h5 class="card-title">@item.Title</h5>
                         @(item.Description.Length > 250 ? item.Description.Substring(0, 250) + "..." : item.Description)
-                        <div class="mt-4">
-                            <a href="#" class="btn btn-primary">Go</a>
-                        </div>
                     </div>
                 </div>
             </div>

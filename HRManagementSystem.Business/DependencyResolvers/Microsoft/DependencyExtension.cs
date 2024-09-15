@@ -4,6 +4,8 @@ using HRManagementSystem.Business.Interfaces;
 using HRManagementSystem.Business.Mappings.AutoMapper;
 using HRManagementSystem.Business.Services;
 using HRManagementSystem.Business.ValidationRules.Advertisement;
+using HRManagementSystem.Business.ValidationRules.AppUser;
+using HRManagementSystem.Business.ValidationRules.Gender;
 using HRManagementSystem.Business.ValidationRules.ProvidedService;
 using HRManagementSystem.DataAccess.Concrete;
 using HRManagementSystem.DataAccess.UnitOfWork;
@@ -33,6 +35,8 @@ namespace HRManagementSystem.Business.DependencyResolvers.Microsoft
             {
                 opt.AddProfile(new ProvidedServiceProfile());
                 opt.AddProfile(new AdvertisementProfile());
+                opt.AddProfile(new AppUserProfile());
+                opt.AddProfile(new GenderProfile());
             });
 
             var mapper = mapperConfiguration.CreateMapper();
@@ -40,12 +44,23 @@ namespace HRManagementSystem.Business.DependencyResolvers.Microsoft
             services.AddSingleton(mapper);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
             services.AddTransient<IValidator<ProvidedServiceCreateDto>, ProvidedServiceCreateDtoValidator>();
             services.AddTransient<IValidator<ProvidedServiceUpdateDto>, ProvidedServiceUpdateDtoValidator>();
+            
             services.AddTransient<IValidator<AdvertisementCreateDto>, AdvertisementCreateDtoValidator>();
             services.AddTransient<IValidator<AdvertisementUpdateDto>, AdvertisementUpdateDtoValidator>();
-            services.AddScoped<IProvidedServiceService, ProvidedServiceManager>();
+            
+            services.AddTransient<IValidator<AppUserCreateDto>, AppUserCreateDtoValidator>();
+            services.AddTransient<IValidator<AppUserUpdateDto>, AppUserUpdateDtoValidator>();
 
+            services.AddTransient<IValidator<GenderUpdateDto>, GenderUpdateDtoValidator>();
+            services.AddTransient<IValidator<GenderCreateDto>, GenderCreateDtoValidator>();
+
+            services.AddScoped<IProvidedServiceService, ProvidedServiceManager>();
+            services.AddScoped<IAdvertisementService, AdvertisementService>();
+            services.AddScoped<IAppUserService, AppUserService>();
+            services.AddScoped<IGenderService, GenderService>();
         }
     }
 }
