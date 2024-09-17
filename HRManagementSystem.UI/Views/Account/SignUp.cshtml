@@ -9,39 +9,49 @@
         <div class="mb-3">
             <label>Your name:</label>
             <input asp-for="@Model.FirstName" class="form-control" />
+            <span class="text-danger" asp-validation-for="@Model.FirstName"></span>
         </div>
 
         <div class="mb-3">
             <label>Your surname:</label>
             <input asp-for="@Model.LastName" class="form-control" />
+            <span class="text-danger" asp-validation-for="@Model.LastName"></span>
         </div>
 
         <div class="mb-3">
             <label>Create username:</label>
             <input asp-for="@Model.Username" class="form-control" />
+            <span class="text-danger" asp-validation-for="@Model.Username"></span>
         </div>
 
 
         <div class="mb-3">
             <label>Your phone number:</label>
             <input asp-for="@Model.PhoneNumber" class="form-control" />
+            <span class="text-danger" asp-validation-for="@Model.PhoneNumber"></span>
         </div>
 
         <div class="mb-3">
-            <select class="form-select" asp-items="@Model.Genders" name="@(nameof(Model.GenderId))">
+            <select class="form-select" asp-items="@Model.Genders" asp-for="@Model.GenderId">
                 <option value="0">Select gender</option>
-            </select>
+            </select>   
+            <span class="text-danger" asp-validation-for="@Model.Genders"></span>
         </div>
 
         <div class="mb-3">
             <label>Your password</label>
             <input type="password" asp-for="@Model.Password" class="form-control" />
+            <span class="text-danger" asp-validation-for="@Model.Password"></span>
         </div>
 
         <div class="mb-3">
             <label>Confirm password</label>
             <input type="pass" asp-for="@Model.ConfirmPassword" class="form-control" />
+            <span class="text-danger" asp-validation-for="@Model.ConfirmPassword"></span>
         </div>
 
+        <div class="mb-3 text-end">
+           <button type="submit" class="btn btn-success">Sign Up</button>
+        </div>
     </form>
 </div>

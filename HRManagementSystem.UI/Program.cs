@@ -4,6 +4,9 @@ using HRManagementSystem.Business;
 using HRManagementSystem.DataAccess;
 using HRManagementSystem.Business.DependencyResolvers.Microsoft;
 using HRManagementSystem.DataAccess.UnitOfWork;
+using FluentValidation;
+using HRManagementSystem.UI.Models;
+using HRManagementSystem.UI.ValidationRules;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,5 +35,6 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 {
     var connectionString = configuration.GetConnectionString("Local");
     services.AddDependencies(configuration);
+    services.AddTransient<IValidator<UserCreateModel>, UserCreateModelValidator>();
     services.AddControllersWithViews();
 }
