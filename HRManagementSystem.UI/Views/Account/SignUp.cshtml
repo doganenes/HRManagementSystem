@@ -1,0 +1,47 @@
+﻿@model UserCreateModel
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mt-4">
+    <form asp-controller="Account" asp-action="SignUp" method="post" class="p-4 w-System.NullReferenceException: 'Object reference not set to an instance of an object.'75 mx-auto">
+        <div class="mb-3">
+            <label>Your name:</label>
+            <input asp-for="@Model.FirstName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Your surname:</label>
+            <input asp-for="@Model.LastName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Create username:</label>
+            <input asp-for="@Model.Username" class="form-control" />
+        </div>
+
+
+        <div class="mb-3">
+            <label>Your phone number:</label>
+            <input asp-for="@Model.PhoneNumber" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <select class="form-select" asp-items="@Model.Genders" name="@(nameof(Model.GenderId))">
+                <option value="0">Select gender</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Your password</label>
+            <input type="password" asp-for="@Model.Password" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Confirm password</label>
+            <input type="pass" asp-for="@Model.ConfirmPassword" class="form-control" />
+        </div>
+
+    </form>
+</div>
