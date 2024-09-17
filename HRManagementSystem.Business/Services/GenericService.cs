@@ -42,6 +42,7 @@ namespace HRManagementSystem.Business.Services
                 {
                     var createdEntity = _mapper.Map<T>(dto);
                     await _unitOfWork.GetRepository<T>().CreateAsync(createdEntity);
+                    await _unitOfWork.SaveChanges();
                     return new Response<CreateDto>(ResponseType.Success, dto);
                 }
 
@@ -74,6 +75,7 @@ namespace HRManagementSystem.Business.Services
                     return new Response(ResponseType.NotFound, $"{id} idsine sahip data bulunamadı!");
                 }
                 _unitOfWork.GetRepository<T>().Remove(data);
+                await _unitOfWork.SaveChanges();
                 return new Response(ResponseType.Success);
             }
 
@@ -89,6 +91,7 @@ namespace HRManagementSystem.Business.Services
                     }
                     var entity = _mapper.Map<T>(dto);
                     _unitOfWork.GetRepository<T>().Update(entity, unchangedData);
+                    await _unitOfWork.SaveChanges();
                     return new Response<UpdateDto>(ResponseType.Success, dto);
                 }
 

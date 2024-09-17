@@ -1,5 +1,8 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using HRManagementSystem.Business.Interfaces;
+using HRManagementSystem.Dtos;
+using HRManagementSystem.UI.Extensions;
 using HRManagementSystem.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,10 +13,15 @@ namespace HRManagementSystem.UI.Controllers
     {
         private readonly IGenderService _genderService;
         private readonly IValidator<UserCreateModel> _userCreateModelValidator;
-        public AccountController(IGenderService genderService, IValidator<UserCreateModel> userCreateModelValidator)
+        private readonly IAppUserService _appUserService;
+        private readonly IMapper _mapper;
+
+        public AccountController(IGenderService genderService, IValidator<UserCreateModel> userCreateModelValidator, IAppUserService appUserService, IMapper mapper)
         {
             _genderService = genderService;
             _userCreateModelValidator = userCreateModelValidator;
+            _appUserService = appUserService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -34,6 +42,9 @@ namespace HRManagementSystem.UI.Controllers
             var result = _userCreateModelValidator.Validate(model);
             if (result.IsValid)
             {
+                var dto = _mapper.Map<AppUserCreateDto>(model);
+                var createResponse = await _appUserService.CreateAsync(dto);
+                return this.ResponseRedirectAction(createResponse,"SignIn");
                 return View(model);
             }
             foreach (var item in result.Errors)
