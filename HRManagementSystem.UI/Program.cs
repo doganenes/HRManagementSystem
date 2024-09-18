@@ -5,9 +5,21 @@ using HRManagementSystem.Business.Helpers;
 using HRManagementSystem.UI.Mappings.AutoMapper;
 using HRManagementSystem.UI.Models;
 using HRManagementSystem.UI.ValidationRules;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(opt =>
+        {
+            opt.Cookie.Name = "HRManagementSystemCookie";
+            opt.Cookie.HttpOnly = true;
+            opt.Cookie.SameSite = SameSiteMode.Strict;
+            opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+            opt.ExpireTimeSpan = TimeSpan.FromDays(7);
+        });
+
 
 ConfigureServices(builder.Services, builder.Configuration);
 
@@ -15,7 +27,7 @@ var app = builder.Build();
 
 Configure(app, app.Environment);
 
-app.Run(); 
+app.Run();
 
 void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
@@ -50,7 +62,11 @@ void Configure(WebApplication app, IWebHostEnvironment env)
 
     app.UseRouting();
 
+    app.UseAuthentication();
+    app.UseAuthorization();
+
     app.UseAuthorization();
 
     app.MapDefaultControllerRoute();
 }
+

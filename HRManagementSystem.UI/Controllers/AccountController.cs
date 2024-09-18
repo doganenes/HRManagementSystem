@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using HRManagementSystem.Business.Interfaces;
+using HRManagementSystem.Common.Enums;
 using HRManagementSystem.Dtos;
 using HRManagementSystem.UI.Extensions;
 using HRManagementSystem.UI.Models;
@@ -43,7 +44,7 @@ namespace HRManagementSystem.UI.Controllers
             if (result.IsValid)
             {
                 var dto = _mapper.Map<AppUserCreateDto>(model);
-                var createResponse = await _appUserService.CreateWithRoleAsync(dto, 2);
+                var createResponse = await _appUserService.CreateWithRoleAsync(dto, (int)RoleType.Member);
                 return this.ResponseRedirectAction(createResponse, "SignIn");
             }
             foreach (var item in result.Errors)
