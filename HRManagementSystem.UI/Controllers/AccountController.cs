@@ -55,5 +55,17 @@ namespace HRManagementSystem.UI.Controllers
             model.Genders = new SelectList(response.Data, "Id", "Definition", model.GenderId);
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SignIn(AppUserLoginDto dto)
+        {
+            return View(dto);
+        }
     }
 }

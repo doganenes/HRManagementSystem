@@ -18,6 +18,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             opt.Cookie.SameSite = SameSiteMode.Strict;
             opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
             opt.ExpireTimeSpan = TimeSpan.FromDays(7);
+            opt.LoginPath = new PathString("/Account/SignIn");
+            opt.LoginPath = new PathString("/Account/LogOut");
+            opt.AccessDeniedPath = new PathString("/Account/AccessDenied");
         });
 
 
