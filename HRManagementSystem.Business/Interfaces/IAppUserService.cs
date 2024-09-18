@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Dtos;
+﻿using HRManagementSystem.Common.Objects;
+using HRManagementSystem.Dtos;
 using HRManagementSystem.Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace HRManagementSystem.Business.Interfaces
 {
     public interface IAppUserService : IService<AppUserCreateDto, AppUserUpdateDto, AppUserListDto, AppUser>
     {
+        Task<IResponse<AppUserCreateDto>> CreateWithRoleAsync(AppUserCreateDto dto, int roleId);
     }
 }

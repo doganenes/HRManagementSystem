@@ -1,15 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using HRManagementSystem.DataAccess.Concrete;
-using HRManagementSystem.Business;
-using HRManagementSystem.DataAccess;
-using HRManagementSystem.Business.DependencyResolvers.Microsoft;
-using HRManagementSystem.DataAccess.UnitOfWork;
+﻿using AutoMapper;
 using FluentValidation;
+using HRManagementSystem.Business.DependencyResolvers.Microsoft;
+using HRManagementSystem.Business.Helpers;
+using HRManagementSystem.UI.Mappings.AutoMapper;
 using HRManagementSystem.UI.Models;
 using HRManagementSystem.UI.ValidationRules;
-using AutoMapper;
-using HRManagementSystem.UI.Mappings.AutoMapper;
-using HRManagementSystem.Business.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +14,8 @@ ConfigureServices(builder.Services, builder.Configuration);
 var app = builder.Build();
 
 Configure(app, app.Environment);
+
+app.Run(); 
 
 void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
@@ -55,5 +53,4 @@ void Configure(WebApplication app, IWebHostEnvironment env)
     app.UseAuthorization();
 
     app.MapDefaultControllerRoute();
-    app.Run();
 }
