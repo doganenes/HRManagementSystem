@@ -5,8 +5,12 @@ using HRManagementSystem.Common.Enums;
 using HRManagementSystem.Dtos;
 using HRManagementSystem.UI.Extensions;
 using HRManagementSystem.UI.Models;
+using HRManagementSystem.Common.Objects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace HRManagementSystem.UI.Controllers
 {
@@ -63,8 +67,41 @@ namespace HRManagementSystem.UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignIn(AppUserLoginDto dto)
+        public async Task<IActionResult> SignIn(AppUserLoginDto dto)
         {
+            var result = await _appUserService.CheckUserAsync(dto);
+            if (result.ResponseType == ResponseType.Success)
+            {
+                var roleResult = await _appUserService.GetRolesByUserIdAsync(result.Data.Id);
+                var claims = new List<Claim>();
+
+                if (roleResult.ResponseType == ResponseType.Success)
+                {
+                    foreach (var role in roleResult.Data)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role, role.Definition));
+                    }
+
+                }
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, result.Data.Id.ToString()));
+
+                var claimsIdentity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = dto.RememberMe
+                };
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("", result.Message);
             return View(dto);
         }
     }
