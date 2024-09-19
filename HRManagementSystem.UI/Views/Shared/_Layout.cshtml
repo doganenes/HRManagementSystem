@@ -72,17 +72,28 @@
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
-                            <li>
-                                <a asp-action="HumanResources" asp-controller="Home" aria-expanded="false">
-                                    <i class="fa-brands fa-osi"></i><span class="nav-text">Human Resources</span>
-                                </a>
-                            </li>
+                            @if (User.IsInRole("Member"))
+                            {
+                                <li>
+                                    <a asp-action="HumanResources" asp-controller="Home" aria-expanded="false">
+                                        <i class="fa-brands fa-osi"></i><span class="nav-text">Human Resources</span>
+                                    </a>
+                                </li>
+                            }
+                            
+                            @if (User.IsInRole("Admin")){
+                                <li>
+                                    <a asp-action="Index" asp-controller="Advertisement" aria-expanded="false">
+                                        <i class="fa-brands fa-osi"></i><span class="nav-text">Job Adverts</span>
+                                    </a>
+                                </li>
+                            }
                             <li>
                                 <a asp-action="LogOut" asp-controller="Account" aria-expanded="false">
                                     <i class="fa-brands fa-osi"></i><span class="nav-text">LogOut</span>
                                 </a>
                             </li>
-                          
+
                         }
                         else
                         {

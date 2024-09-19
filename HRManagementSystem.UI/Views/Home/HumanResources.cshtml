@@ -17,12 +17,12 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <div><a href="#">Apply</a></div>
+                        <div><a asp-controller="Advertisement" asp-action="Apply">Apply</a></div>
                     }
                     else
                     {
                         <div class="alert alert-warning text-dark text-center mt-3">
-                            Başvuru yapabilmeniz için kayıt olmanız gerekmektedir. <a href="#" class="text-primary">Kayıt Ol</a>
+                            You should sign in for appliying jobs.<a asp-action="SignIn" asp-controller="Account" class="text-primary">Sign In</a>
                         </div>
                     }
                 </div>
