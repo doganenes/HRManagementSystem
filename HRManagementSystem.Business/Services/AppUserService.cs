@@ -35,19 +35,20 @@ namespace HRManagementSystem.Business.Services
             if (validationResult.IsValid)
             {
                 var user = _mapper.Map<AppUser>(dto);
-                user.AppUserRoles = new List<AppUserRole>();
-                user.AppUserRoles.Add(new AppUserRole
+                await _unitOfWork.GetRepository<AppUser>().CreateAsync(user);
+                await _unitOfWork.GetRepository<AppUserRole>().CreateAsync(new AppUserRole
                 {
                     AppUser = user,
                     AppRoleId = roleId
                 });
-
-                await _unitOfWork.GetRepository<AppUser>().CreateAsync(user);
                 await _unitOfWork.SaveChanges();
+
                 return new Response<AppUserCreateDto>(ResponseType.Success, dto);
             }
 
             return new Response<AppUserCreateDto>(dto, validationResult.ConvertToCustomValidationError());
         }
+
+
     }
 }
