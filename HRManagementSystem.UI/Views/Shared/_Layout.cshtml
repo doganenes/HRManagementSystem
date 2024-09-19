@@ -69,21 +69,35 @@
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first text-light">Panel</li>
-                    <li>
-                        <a asp-action="SignUp" asp-controller="Account" aria-expanded="false">
-                            <i class="fa-solid fa-user-plus"></i><span class="nav-text">Sign Up</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-action="SignIn" asp-controller="Account" aria-expanded="false">
-                            <i class="fa-solid fa-right-to-bracket"></i><span class="nav-text">Login</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-action="HumanResources" asp-controller="Home" aria-expanded="false">
-                            <i class="fa-brands fa-osi"></i><span class="nav-text">Human Resources</span>
-                        </a>
-                    </li>
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a asp-action="HumanResources" asp-controller="Home" aria-expanded="false">
+                                    <i class="fa-brands fa-osi"></i><span class="nav-text">Human Resources</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="LogOut" asp-controller="Account" aria-expanded="false">
+                                    <i class="fa-brands fa-osi"></i><span class="nav-text">LogOut</span>
+                                </a>
+                            </li>
+                          
+                        }
+                        else
+                        {
+                            <li>
+                                <a asp-action="SignUp" asp-controller="Account" aria-expanded="false">
+                                    <i class="fa-solid fa-user-plus"></i><span class="nav-text">Sign Up</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="SignIn" asp-controller="Account" aria-expanded="false">
+                                    <i class="fa-solid fa-right-to-bracket"></i><span class="nav-text">Login</span>
+                                </a>
+                            </li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
