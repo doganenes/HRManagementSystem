@@ -1,0 +1,12 @@
+﻿@model AdvertisementAppUserCreateModel
+@{
+    ViewData["Title"] = "Send";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Send" asp-controller="Advertisement" method="post">
+    <input type="hidden" asp-for="@Model.AdvertisementId" />
+    <div class="mb-3">
+    </div>
+
+</form>
