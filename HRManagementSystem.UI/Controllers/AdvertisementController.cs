@@ -18,10 +18,6 @@ namespace HRManagementSystem.UI.Controllers
             _appUserService = appUserService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [Authorize(Roles = "Member")]
         [HttpGet]

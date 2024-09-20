@@ -1,12 +1,41 @@
 ﻿@model AdvertisementAppUserCreateModel
+
 @{
     ViewData["Title"] = "Send";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form asp-action="Send" asp-controller="Advertisement" method="post">
+<form class="mx-auto p-3" asp-action="Send" asp-controller="Advertisement" method="post">
     <input type="hidden" asp-for="@Model.AdvertisementId" />
     <div class="mb-3">
+        <label>Military Status :</label>
+        <select onchange="setInputVisibility()" asp-for="@Model.MilitaryStatusId" asp-items="@ViewBag.MilitaryStatus" class="form-select">
+        </select>
+    </div>
+
+    <div id="postponeDiv" class="mb-3" style="visibility:hidden">
+        <label>Postpone Date</label>
+        <input type="date" asp-for="@Model.EndDate" class="form-control " />
     </div>
 
 </form>
+
+@section script {
+    <script>
+
+        function setInputVisibility() {
+            var selectElement = document.getElementById("MilitaryStatusId");
+            var postponeDiv = document.getElementById("postponeDiv");
+            var militaryStatusId = selectElement.Value;
+
+            var dateDivElement = document.getElementById("postponeDiv");
+
+            if (militaryStatusId == 2) {
+                dateDivElement.style.visibility = "visible";
+            } else {
+                dateDivElement.style.visibility = "hidden";
+            }
+        }
+
+    </script>
+}

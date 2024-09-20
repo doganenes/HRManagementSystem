@@ -80,10 +80,11 @@
                                     </a>
                                 </li>
                             }
-                            
-                            @if (User.IsInRole("Admin")){
+
+                            @if (User.IsInRole("Admin"))
+                            {
                                 <li>
-                                    <a asp-action="Index" asp-controller="Advertisement" aria-expanded="false">
+                                    <a asp-action="Send" asp-controller="Advertisement" aria-expanded="false">
                                         <i class="fa-brands fa-osi"></i><span class="nav-text">Job Adverts</span>
                                     </a>
                                 </li>
@@ -107,6 +108,14 @@
                                     <i class="fa-solid fa-right-to-bracket"></i><span class="nav-text">Login</span>
                                 </a>
                             </li>
+
+                            <li>
+                                <a asp-action="HumanResources" asp-controller="Home" aria-expanded="false">
+                                    <i class="fa-solid fa-right-to-bracket"></i><span class="nav-text">Human Resources</span>
+                                </a>
+                            </li>
+
+
                         }
                     }
                 </ul>
@@ -145,6 +154,11 @@
     <script src="~/FocusAdminTemplate/vendor/jquery.counterup/jquery.counterup.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/FocusAdminTemplate/js/dashboard/dashboard-1.js"></script>
+
+    <!-- Render section -->
+    @RenderSection("script", false){
+
+    }
 
 </body>
 </html>
