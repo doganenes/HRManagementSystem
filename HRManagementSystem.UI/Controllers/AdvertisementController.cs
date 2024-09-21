@@ -47,5 +47,12 @@ namespace HRManagementSystem.UI.Controllers
                 AppUserId = userId,
             });
         }
+
+        [Authorize(Roles = "Member")]
+        [HttpPost]
+        public async Task<IActionResult> Send(AdvertisementAppUserCreateModel model)
+        {
+            return View();
+        }
     }
 }

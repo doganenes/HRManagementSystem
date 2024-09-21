@@ -5,18 +5,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form class="mx-auto p-3" asp-action="Send" asp-controller="Advertisement" method="post">
+<form class="mx-auto p-3" asp-action="Send" asp-controller="Advertisement" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.AdvertisementId" />
+    <input type="hidden" asp-for="@Model.AppUserId" />
+
+    @if (ViewBag.GenderId == (int)GenderType.Male)
+    {
+        <div class="mb-3">
+            <label>Military Status :</label>
+            <select onchange="setInputVisibility()" asp-for="@Model.MilitaryStatusId" asp-items="@ViewBag.MilitaryStatus" class="form-select">
+            </select>
+        </div>
+
+        <div id="postponeDiv" class="mb-3" style="visibility:hidden">
+            <label>Postpone Date</label>
+            <input type="date" asp-for="@Model.EndDate" class="form-control " />
+        </div>
+
+    }
+
+    else
+    {
+        <input type="hidden" asp-for="@Model.MilitaryStatusId" value="@((int)MilitaryStatusType.Exempt)" />
+    }
+
     <div class="mb-3">
-        <label>Military Status :</label>
-        <select onchange="setInputVisibility()" asp-for="@Model.MilitaryStatusId" asp-items="@ViewBag.MilitaryStatus" class="form-select">
-        </select>
+        <label>Work Experience (write year) :</label>
+        <input type="number" asp-for="@Model.WorkExperience" class="form-control" />
     </div>
 
-    <div id="postponeDiv" class="mb-3" style="visibility:hidden">
-        <label>Postpone Date</label>
-        <input type="date" asp-for="@Model.EndDate" class="form-control " />
+    <div class="mb-3">
+        <label>Cv :</label>
+        <input type="file" asp-for="@Model.CvFile" class="form-control" />
     </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+
 
 </form>
 
@@ -26,7 +52,7 @@
         function setInputVisibility() {
             var selectElement = document.getElementById("MilitaryStatusId");
             var postponeDiv = document.getElementById("postponeDiv");
-            var militaryStatusId = selectElement.Value;
+            var militaryStatusId = selectElement.value;
 
             var dateDivElement = document.getElementById("postponeDiv");
 
