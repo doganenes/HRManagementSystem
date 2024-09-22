@@ -1,6 +1,7 @@
 ﻿using HRManagementSystem.Business.Interfaces;
 using HRManagementSystem.Common.Enums;
 using HRManagementSystem.Dtos;
+using HRManagementSystem.UI.Extensions;
 using HRManagementSystem.UI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,12 @@ namespace HRManagementSystem.UI.Controllers
     public class AdvertisementController : Controller
     {
         private readonly IAppUserService _appUserService;
+        private readonly IAdvertisementAppUserService _advertisementAppUserService;
 
-        public AdvertisementController(IAppUserService appUserService)
+        public AdvertisementController(IAppUserService appUserService, IAdvertisementAppUserService advertisementAppUserService)
         {
             _appUserService = appUserService;
+            _advertisementAppUserService = advertisementAppUserService;
         }
 
 
@@ -52,7 +55,37 @@ namespace HRManagementSystem.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Send(AdvertisementAppUserCreateModel model)
         {
-            return View();
+            AdvertisementAppUserCreateDto dto = new();
+            if (model.CvFile != null)
+            {
+                var fileName = Guid.NewGuid().ToString();
+                var extName = Path.GetExtension(model.CvFile.FileName);
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "cvFiles", fileName + extName);
+                var stream = new FileStream(path, FileMode.Create);
+                await model.CvFile.CopyToAsync(stream);
+                dto.CvPath = path;
+            }
+
+            dto.AdvertisementAppUserStatusId = model.AdvertisementAppUserStatusId;
+            dto.AdvertisementId = model.AdvertisementId;
+            dto.AppUserId = model.AppUserId;
+            dto.EndDate = model.EndDate;
+            dto.MilitaryStatusId = model.MilitaryStatusId;
+            dto.WorkExperience = model.WorkExperience;
+
+            var response = await _advertisementAppUserService.CreateAsync(dto);
+
+            if (response.ResponseType == Common.Objects.ResponseType.ValidationError)
+            {
+                foreach (var error in response.ValidationErrors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+
+                return View(model);
+            }
+
+            return RedirectToAction("HumanResource", "Home");
         }
     }
 }

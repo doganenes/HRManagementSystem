@@ -47,6 +47,10 @@ namespace HRManagementSystem.Business.DependencyResolvers.Microsoft
             services.AddTransient<IValidator<GenderUpdateDto>, GenderUpdateDtoValidator>();
             services.AddTransient<IValidator<GenderCreateDto>, GenderCreateDtoValidator>();
 
+            services.AddTransient<IValidator<AdvertisementAppUserCreateDto>, AdvertisementAppUserCreateDtoValidator>();
+
+            services.AddScoped<IAdvertisementAppUserService, AdvertisementAppUserService>();
+
             services.AddScoped<IProvidedServiceService, ProvidedServiceManager>();
             services.AddScoped<IAdvertisementService, AdvertisementService>();
             services.AddScoped<IAppUserService, AppUserService>();
