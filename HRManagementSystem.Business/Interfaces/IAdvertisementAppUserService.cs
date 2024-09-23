@@ -1,4 +1,5 @@
-﻿using HRManagementSystem.Common.Objects;
+﻿using HRManagementSystem.Common.Enums;
+using HRManagementSystem.Common.Objects;
 using HRManagementSystem.Dtos;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,6 @@ namespace HRManagementSystem.Business.Interfaces
     public interface IAdvertisementAppUserService
     {
         Task<IResponse<AdvertisementAppUserCreateDto>> CreateAsync(AdvertisementAppUserCreateDto dto);
+        Task<List<AdvertisementAppUserListDto>> GetList(AdvertisementAppUserStatusType type);
     }
 }

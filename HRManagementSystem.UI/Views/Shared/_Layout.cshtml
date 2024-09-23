@@ -68,7 +68,7 @@
         <div class="quixnav">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label first text-light">Panel</li>
+                    <li class="nav-label first text-light">@(User.Identity.IsAuthenticated && User.IsInRole("Admin") ? "Admin" : "") Panel</li>
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
@@ -84,7 +84,7 @@
                             @if (User.IsInRole("Admin"))
                             {
                                 <li>
-                                    <a asp-action="Send" asp-controller="Advertisement" aria-expanded="false">
+                                    <a asp-action="List" asp-controller="Advertisement" aria-expanded="false">
                                         <i class="fa-brands fa-osi"></i><span class="nav-text">Job Adverts</span>
                                     </a>
                                 </li>
@@ -114,7 +114,6 @@
                                     <i class="fa-solid fa-right-to-bracket"></i><span class="nav-text">Human Resources</span>
                                 </a>
                             </li>
-
 
                         }
                     }

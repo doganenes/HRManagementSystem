@@ -52,7 +52,7 @@ namespace HRManagementSystem.DataAccess.Repositories
             return !asNoTracking ? await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter) : await _context.Set<T>().SingleOrDefaultAsync(filter);
         }
 
-        public IQueryable<T> GetQueryable()
+        public IQueryable<T> GetQuery()
         {
             return _context.Set<T>().AsQueryable();
         }

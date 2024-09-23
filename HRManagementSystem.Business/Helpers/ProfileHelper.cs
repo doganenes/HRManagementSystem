@@ -19,7 +19,9 @@ namespace HRManagementSystem.Business.Helpers
                 new AppUserProfile(),
                 new GenderProfile(),
                 new AppRoleProfile(),
-                new AdvertisementAppUserProfile()
+                new AdvertisementAppUserProfile(),
+                new AdvertisementAppUserStatusProfile(),
+                new MilitaryStatusProfile()
             };
         }
     }

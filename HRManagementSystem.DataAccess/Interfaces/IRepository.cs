@@ -17,6 +17,7 @@ namespace HRManagementSystem.DataAccess.Interfaces
         Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, bool>> filter, Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.DESC);
         Task<T> FindAsync(object id);
         Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter, bool asNoTracking = false);
+        IQueryable<T> GetQuery();
         void Remove(T entity);
         Task CreateAsync(T entity);
         void Update(T entity, T unchanged);

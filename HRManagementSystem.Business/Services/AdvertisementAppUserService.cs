@@ -2,10 +2,12 @@
 using FluentValidation;
 using HRManagementSystem.Business.Extensions;
 using HRManagementSystem.Business.Interfaces;
+using HRManagementSystem.Common.Enums;
 using HRManagementSystem.Common.Objects;
 using HRManagementSystem.DataAccess.UnitOfWork;
 using HRManagementSystem.Dtos;
 using HRManagementSystem.Entity.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +55,14 @@ namespace HRManagementSystem.Business.Services
             }
 
             return new Response<AdvertisementAppUserCreateDto>(dto, result.ConvertToCustomValidationError());
+        }
+
+        public async Task<List<AdvertisementAppUserListDto>> GetList(AdvertisementAppUserStatusType type)
+        {
+            var query = _unitOfWork.GetRepository<AdvertisementAppUser>().GetQuery();
+            var list = await query.Include(x => x.Advertisement).Include(x => x.AdvertisementAppUserStatus).Include(x => x.MilitaryStatus).Include(x => x.AppUser).Where(x => x.AdvertisementAppUserStatusId == (int)type).ToListAsync();
+
+            return _mapper.Map<List<AdvertisementAppUserListDto>>(list);
         }
     }
 }
