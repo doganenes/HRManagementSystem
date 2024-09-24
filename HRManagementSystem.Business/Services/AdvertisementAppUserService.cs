@@ -40,7 +40,7 @@ namespace HRManagementSystem.Business.Services
                 {
                     var createdAdvertisementAppUser = _mapper.Map<AdvertisementAppUser>(dto);
                     await _unitOfWork.GetRepository<AdvertisementAppUser>().CreateAsync(createdAdvertisementAppUser);
-                    await _unitOfWork.SaveChanges();
+                    await _unitOfWork.SaveChangesAsync();
                     return new Response<AdvertisementAppUserCreateDto>(ResponseType.Success, dto);
                 }
 
@@ -60,9 +60,17 @@ namespace HRManagementSystem.Business.Services
         public async Task<List<AdvertisementAppUserListDto>> GetList(AdvertisementAppUserStatusType type)
         {
             var query = _unitOfWork.GetRepository<AdvertisementAppUser>().GetQuery();
-            var list = await query.Include(x => x.Advertisement).Include(x => x.AdvertisementAppUserStatus).Include(x => x.MilitaryStatus).Include(x => x.AppUser).Where(x => x.AdvertisementAppUserStatusId == (int)type).ToListAsync();
+            var list = await query.Include(x => x.Advertisement).Include(x => x.AdvertisementAppUserStatus).Include(x => x.MilitaryStatus).Include(x => x.AppUser).ThenInclude(x => x.Gender).Where(x => x.AdvertisementAppUserStatusId == (int)type).ToListAsync();
 
             return _mapper.Map<List<AdvertisementAppUserListDto>>(list);
+        }
+
+        public async Task SetStatusAsync(int advertisementAppUserId, AdvertisementAppUserStatusType type)
+        {
+            var query = _unitOfWork.GetRepository<AdvertisementAppUser>().GetQuery();
+            var entity = await query.SingleOrDefaultAsync(x => x.Id == advertisementAppUserId);
+            entity.AdvertisementAppUserStatusId = (int)type;
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace HRManagementSystem.Dtos
 {
     public class AdvertisementAppUserListDto
     {
+        public int Id { get; set; }
         public int AdvertisementId { get; set; }
         public AdvertisementListDto Advertisement { get; set; }
         public int AppUserId { get; set; }

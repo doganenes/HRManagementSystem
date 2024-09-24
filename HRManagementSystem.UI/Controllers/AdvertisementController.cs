@@ -105,13 +105,34 @@ namespace HRManagementSystem.UI.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("HumanResource", "Home");
+            return RedirectToAction("HumanResources", "Home");
         }
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> List()
         {
             var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Applied);
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> SetStatus(int advertisementAppUserId, AdvertisementAppUserStatusType type)
+        {
+            await _advertisementAppUserService.SetStatusAsync(advertisementAppUserId, type);
+            return RedirectToAction("List");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ApprovedList()
+        {
+            var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Interview);
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RejectedList()
+        {
+            var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Negative);
             return View();
         }
     }

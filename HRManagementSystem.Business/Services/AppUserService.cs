@@ -43,7 +43,7 @@ namespace HRManagementSystem.Business.Services
                     AppUser = user,
                     AppRoleId = roleId
                 });
-                await _unitOfWork.SaveChanges();
+                await _unitOfWork.SaveChangesAsync();
 
                 return new Response<AppUserCreateDto>(ResponseType.Success, dto);
             }
