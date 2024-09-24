@@ -14,6 +14,8 @@
     <link href="~/focusadmintemplate/css/style.css" rel="stylesheet" />
     <link href="~/css/style.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    @RenderSection("css", false)
 </head>
 
 <body>
@@ -76,7 +78,7 @@
                             {
                                 <li>
                                     <a asp-action="HumanResources" asp-controller="Home" aria-expanded="false">
-                                        <i class="fa-brands fa-osi"></i><span class="nav-text">Human Resources</span>
+                                        <i class="fa-brands fa-web-awesome"></i><span class="nav-text">Human Resources</span>
                                     </a>
                                 </li>
                             }
@@ -85,13 +87,19 @@
                             {
                                 <li>
                                     <a asp-action="List" asp-controller="Advertisement" aria-expanded="false">
-                                        <i class="fa-brands fa-osi"></i><span class="nav-text">Job Adverts</span>
+                                        <i class="fa-brands fa-uikit"></i><span class="nav-text">Applications</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a asp-action="List" asp-controller="Application" aria-expanded="false">
+                                        <i class="fa-brands fa-space-awesome"></i><span class="nav-text">Job Adverts</span>
                                     </a>
                                 </li>
                             }
                             <li>
                                 <a asp-action="LogOut" asp-controller="Account" aria-expanded="false">
-                                    <i class="fa-brands fa-osi"></i><span class="nav-text">LogOut</span>
+                                    <i class="fa-solid fa-right-from-bracket"></i><span class="nav-text">Log Out</span>
                                 </a>
                             </li>
 
@@ -111,10 +119,9 @@
 
                             <li>
                                 <a asp-action="HumanResources" asp-controller="Home" aria-expanded="false">
-                                    <i class="fa-solid fa-right-to-bracket"></i><span class="nav-text">Human Resources</span>
+                                    <i class="fa-solid fa-person"></i><span class="nav-text">Human Resources</span>
                                 </a>
                             </li>
-
                         }
                     }
                 </ul>
