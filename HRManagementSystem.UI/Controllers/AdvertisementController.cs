@@ -1,7 +1,6 @@
 ﻿using HRManagementSystem.Business.Interfaces;
 using HRManagementSystem.Common.Enums;
 using HRManagementSystem.Dtos;
-using HRManagementSystem.UI.Extensions;
 using HRManagementSystem.UI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
