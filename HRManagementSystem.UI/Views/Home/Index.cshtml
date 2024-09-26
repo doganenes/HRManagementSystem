@@ -4,22 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    .card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
+@section css {
+    <style>
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
 
-    .card-body {
-        flex: 1;
-    }
+        .card-body {
+            flex: 1;
+        }
 
-    .card-img-top {
-        height: 15rem;
-        object-fit: cover;
-    }
-</style>
+        .card-img-top {
+            height: 15rem;
+            object-fit: cover;
+        }
+    </style>
+}
 
 <h2 class="px-4">Our Services</h2>
 
