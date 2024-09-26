@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HRManagementSystem.Business\HRManagementSystem.Business.csproj" />
+    <ProjectReference Include="..\HRManagementSystem.Common\HRManagementSystem.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

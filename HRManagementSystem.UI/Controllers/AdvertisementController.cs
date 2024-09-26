@@ -22,13 +22,13 @@ namespace HRManagementSystem.UI.Controllers
 
 
         [Authorize(Roles = "Member")]
-        [HttpGet]
         public async Task<IActionResult> Send(int advertisementId)
         {
             var userId = int.Parse((User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)).Value);
             var userResponse = await _appUserService.GetByIdAsync<AppUserListDto>(userId);
 
             ViewBag.GenderId = userResponse.Data.GenderId;
+
             var items = Enum.GetValues(typeof(MilitaryStatusType));
 
             var list = new List<MilitaryStatusListDto>();
@@ -38,17 +38,19 @@ namespace HRManagementSystem.UI.Controllers
                 list.Add(new MilitaryStatusListDto
                 {
                     Id = item,
-                    Definition = Enum.GetName(typeof(MilitaryStatusType), item)
+                    Definition = Enum.GetName(typeof(MilitaryStatusType), item),
                 });
             }
 
             ViewBag.MilitaryStatus = new SelectList(list, "Id", "Definition");
-            return View(new AdvertisementAppUserCreateModel()
+
+            return View(new AdvertisementAppUserCreateModel
             {
                 AdvertisementId = advertisementId,
                 AppUserId = userId,
             });
         }
+
 
         [Authorize(Roles = "Member")]
         [HttpPost]
@@ -73,7 +75,6 @@ namespace HRManagementSystem.UI.Controllers
             dto.WorkExperience = model.WorkExperience;
 
             var response = await _advertisementAppUserService.CreateAsync(dto);
-
             if (response.ResponseType == Common.Objects.ResponseType.ValidationError)
             {
                 foreach (var error in response.ValidationErrors)
@@ -95,7 +96,7 @@ namespace HRManagementSystem.UI.Controllers
                     list.Add(new MilitaryStatusListDto
                     {
                         Id = item,
-                        Definition = Enum.GetName(typeof(MilitaryStatusType), item)
+                        Definition = Enum.GetName(typeof(MilitaryStatusType), item),
                     });
                 }
 
@@ -103,15 +104,17 @@ namespace HRManagementSystem.UI.Controllers
 
                 return View(model);
             }
-
-            return RedirectToAction("HumanResources", "Home");
+            else
+            {
+                return RedirectToAction("HumanResource", "Home");
+            }
         }
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> List()
         {
             var list = await _advertisementAppUserService.GetList(AdvertisementAppUserStatusType.Applied);
-            return View();
+            return View(list);
         }
 
         [Authorize(Roles = "Admin")]

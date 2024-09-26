@@ -27,7 +27,6 @@ namespace HRManagementSystem.UI.Controllers
             return View(new AdvertisementCreateDto());
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Create(AdvertisementCreateDto dto)
         {
