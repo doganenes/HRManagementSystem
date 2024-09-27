@@ -1,6 +1,6 @@
 # HR Management System 
 
-`.NET Core` `Entity Framework` `SQL Server` `Fluent Validation` `Identity` `Unit of Work` `N-Layer` `Bootstrap`
+`.NET Core` `Entity Framework` `SQL Server` `Fluent Validation` `Identity` `Unit of Work` `AutoMapper` `N-Layer` `Bootstrap`
 
 
 This is a human resources management system. The system includes a company's self-promotion page and job postings.
