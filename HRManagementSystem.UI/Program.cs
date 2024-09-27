@@ -69,6 +69,6 @@ void Configure(WebApplication app, IWebHostEnvironment env)
     app.UseAuthorization();
 
     app.UseAuthorization();
-
+    app.UseStatusCodePagesWithReExecute("/Error/NotFoundPage");
     app.MapDefaultControllerRoute();
 }
