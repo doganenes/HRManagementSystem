@@ -106,7 +106,7 @@ namespace HRManagementSystem.UI.Controllers
             }
             else
             {
-                return RedirectToAction("HumanResource", "Home");
+                return RedirectToAction("HumanResources", "Home");
             }
         }
 
