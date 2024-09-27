@@ -61,7 +61,7 @@ namespace HRManagementSystem.Business.Services
                 var data = await _unitOfWork.GetRepository<T>().GetByFilterAsync(x => x.Id == id);
                 if (data == null)
                 {
-                    return new Response<IDto>(ResponseType.NotFound, $"{id}'ye sahip data bulunamadı!");
+                    return new Response<IDto>(ResponseType.NotFound, $"{id} has data not found!");
                 }
                 var dto = _mapper.Map<IDto>(data);
                 return new Response<IDto>(ResponseType.Success, dto);
@@ -72,7 +72,7 @@ namespace HRManagementSystem.Business.Services
                 var data = await _unitOfWork.GetRepository<T>().FindAsync(id);
                 if (data == null)
                 {
-                    return new Response(ResponseType.NotFound, $"{id} idsine sahip data bulunamadı!");
+                    return new Response(ResponseType.NotFound, $"{id} has data not found!");
                 }
                 _unitOfWork.GetRepository<T>().Remove(data);
                 await _unitOfWork.SaveChangesAsync();
@@ -87,7 +87,7 @@ namespace HRManagementSystem.Business.Services
                     var unchangedData = await _unitOfWork.GetRepository<T>().FindAsync(dto.Id);
                     if (unchangedData == null)
                     {
-                        return new Response<UpdateDto>(ResponseType.NotFound, $"{dto.Id} idsine sahip data bulunamadı!");
+                        return new Response<UpdateDto>(ResponseType.NotFound, $"{dto.Id} has data not found!");
                     }
                     var entity = _mapper.Map<T>(dto);
                     _unitOfWork.GetRepository<T>().Update(entity, unchangedData);
